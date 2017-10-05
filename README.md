@@ -1,6 +1,8 @@
 # nuget-package-lister
 Lists the packages that are provided by a specified endpoint, supports NuGet Server 2.X.X. Built in Visual Studio 2017 using the `NuGet.Core` [library](https://github.com/NuGet/NuGet2).
 
+This library ***DOES NOT*** add NuGet packages to a package feed, it only pulls down information about packages that already exists.
+
 ### Repo Status
 #### Overall
 [![Build status](https://ci.appveyor.com/api/projects/status/w7q53cjml7k0t003?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-lister)
