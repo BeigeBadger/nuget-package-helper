@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageLister", "NuGet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageDeleter", "NuGetPackageDeleter\NuGetPackageDeleter.csproj", "{F3E8E674-F070-49E8-9080-5160178CE53E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFormattingHelper", "ConsoleFormattingHelper\ConsoleFormattingHelper.csproj", "{50E0401D-772C-4779-B048-5E72AE131286}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F3E8E674-F070-49E8-9080-5160178CE53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E8E674-F070-49E8-9080-5160178CE53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3E8E674-F070-49E8-9080-5160178CE53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E0401D-772C-4779-B048-5E72AE131286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E0401D-772C-4779-B048-5E72AE131286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E0401D-772C-4779-B048-5E72AE131286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E0401D-772C-4779-B048-5E72AE131286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
