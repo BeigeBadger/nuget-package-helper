@@ -5,3 +5,4 @@ NuGetPackageLister/packages/
 NuGetPackageDeleter/obj/
 NuGetPackageDeleter/bin/
 packages/
+.vs/
