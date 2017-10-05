@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageLister", "NuGetPackageLister\NuGetPackageLister.csproj", "{A1F189DE-4A22-423F-8CD2-9EB3027D1519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageDeleter", "NuGetPackageDeleter\NuGetPackageDeleter.csproj", "{F3E8E674-F070-49E8-9080-5160178CE53E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1F189DE-4A22-423F-8CD2-9EB3027D1519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F189DE-4A22-423F-8CD2-9EB3027D1519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F189DE-4A22-423F-8CD2-9EB3027D1519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F189DE-4A22-423F-8CD2-9EB3027D1519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E8E674-F070-49E8-9080-5160178CE53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E8E674-F070-49E8-9080-5160178CE53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E8E674-F070-49E8-9080-5160178CE53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E8E674-F070-49E8-9080-5160178CE53E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B982570A-4201-4399-BCEE-4C706359E9A8}
+	EndGlobalSection
+EndGlobal
