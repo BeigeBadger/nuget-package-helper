@@ -10,7 +10,7 @@ TODO
 
 ## Repo Status
 #### Overall
-[![Build status](https://ci.appveyor.com/api/projects/status/w7q53cjml7k0t003?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-lister)
+[![Build status](https://ci.appveyor.com/api/projects/status/x5u2lnk7j5v0lyrp?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-helper)
 
 #### Master
-[![Build status](https://ci.appveyor.com/api/projects/status/w7q53cjml7k0t003/branch/master?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-lister)
+[![Build status](https://ci.appveyor.com/api/projects/status/x5u2lnk7j5v0lyrp/branch/master?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-helper)
