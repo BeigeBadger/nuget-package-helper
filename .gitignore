@@ -4,3 +4,4 @@ NuGetPackageLister/obj/
 NuGetPackageLister/packages/
 NuGetPackageDeleter/obj/
 NuGetPackageDeleter/bin/
+packages/
