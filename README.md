@@ -8,7 +8,7 @@ Get a list of all the packages provided by a specified endpoint.
 ### Delete
 TODO
 
-### Repo Status
+## Repo Status
 #### Overall
 [![Build status](https://ci.appveyor.com/api/projects/status/w7q53cjml7k0t003?svg=true&retina=true)](https://ci.appveyor.com/project/BeigeBadger/nuget-package-lister)
 
