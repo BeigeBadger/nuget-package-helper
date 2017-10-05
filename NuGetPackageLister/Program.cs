@@ -126,6 +126,7 @@ namespace NuGetPackageLister
 			Console.ReadLine();
 		}
 
+		// TODO: Abstract some of this common functionality into a helper library
 		private static void PrintEmptyLine()
 		{
 			Console.WriteLine();
