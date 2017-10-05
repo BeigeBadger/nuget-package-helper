@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageLister", "NuGetPackageLister\NuGetPackageLister.csproj", "{C851336B-0287-40B1-AFAC-6D4F73B8989F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageLister", "NuGetPackageLister.csproj", "{C851336B-0287-40B1-AFAC-6D4F73B8989F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageDeleter", "NuGetPackageDeleter\NuGetPackageDeleter.csproj", "{9895D5CD-5658-463D-B21A-88401C774726}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetPackageDeleter", "..\NuGetPackageDeleter\NuGetPackageDeleter.csproj", "{9895D5CD-5658-463D-B21A-88401C774726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
