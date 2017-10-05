@@ -2,3 +2,5 @@ NuGetPackageLister/.vs/
 NuGetPackageLister/bin/
 NuGetPackageLister/obj/
 NuGetPackageLister/packages/
+NuGetPackageDeleter/obj/
+NuGetPackageDeleter/bin/
