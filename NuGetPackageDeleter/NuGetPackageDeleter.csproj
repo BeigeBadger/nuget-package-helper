@@ -55,5 +55,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleFormattingHelper\ConsoleFormattingHelper.csproj">
+      <Project>{50E0401D-772C-4779-B048-5E72AE131286}</Project>
+      <Name>ConsoleFormattingHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
