@@ -22,12 +22,20 @@ namespace NuGetPackageLister
 		private const string SuccessfullyContactedServerMessageText = "Successfully contacted the server using the URL provided";
 		private const string AttemptingToFindPackagesMessageText = "Attempting to find packages...";
 
-		private const string FeedSourceDescriptionBlurb =
-			"The URL that you enter should be in the form of: 'https://<domain>.<gTLD>/nuget/' or\r\n'https://nuget.<domain>.<gTLD>/nuget/' without the quotes. Your URL\r\n" +
-			"feed may have something different on the end like '/api/packages/'. to find the URL for your package feed visit the\r\n" +
-			"base URL (without /nuget/) and it should be listed under the Repository URLs section";
+		private static readonly string InitialToolBlurbMessageText =
+			"This tool will allow you to specify a NuGet package feed to view the packages for. It was built to support NuGet\r\n" +
+			"Server 2.8, If you have a different version it may not work for you.\r\n\r\n" +
+			"It uses the following commands from the NuGet.Core package: `FindPackages` with the AllVersions, IncludeDelisted, \r\n" +
+			"and AllowPreRelease flags set if you specify a package; otherwise it will use the `GetPackages` command.\r\n" +
+			"See https://github.com/NuGet/NuGet2 for more information.";
 
-		private const string EnterPackageIdFilterPromptMessage =
+		private const string FeedSourceDescriptionBlurbMessageText =
+			"The URL that you enter should be in the form of: 'https://<domain>.<gTLD>/nuget/' or\r\n" +
+			"'https://nuget.<domain>.<gTLD>/nuget/' without the quotes. Your URL feed may have something different on the end\r\n" +
+			"like '/api/packages/'. to find the URL for your package feed visit the base URL (without /nuget/) and it should be\r\n" +
+			"listed under the Repository URLs section";
+
+		private const string EnterPackageIdFilterPromptMessageText =
 			"If you only wish to return results for a specific package, please enter the package id now. Otherwise, press enter.";
 
 		// Message templates
@@ -41,21 +49,13 @@ namespace NuGetPackageLister
 		private const string OutputLogSummaryMessageTemplate = "A text and a csv file containing the results have been outputted to:\r\n'{0}'.";
 
 		// Statics
-		private static readonly List<string> _flagsToUse = new List<string> { "-AllVersions", "-IncludeDelisted", "-PreRelease" };
-
 		private static readonly SemanticVersion minSemVer = new SemanticVersion("0.0.0");
-		private static readonly VersionSpec versionSpec = new VersionSpec { MinVersion = minSemVer, IsMinInclusive = true };
 
-		private static readonly string BlurbTextTemplate =
-			"This tool will allow you to specify a NuGet package feed to view the packages for. It was built to support NuGet\r\n" +
-			"Server 2.8\r\n\r\n" +
-			"If you have a different version it may not work for you. It uses the `list` argument from \r\n" +
-			"https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference#list with the following flags set: " +
-			$"{ConsoleHelper.ListItemDecorator}{string.Join(ConsoleHelper.ListItemDecorator, _flagsToUse)}";
+		private static readonly VersionSpec versionSpec = new VersionSpec { MinVersion = minSemVer, IsMinInclusive = true };
 
 		public static void Main(string[] args)
 		{
-			PrintInitialBlurbMessage();
+			ConsoleHelper.PrintInitialBlurbMessage(WelcomeMessageText, InitialToolBlurbMessageText, FeedSourceDescriptionBlurbMessageText);
 			ConsoleHelper.PromptUserForInput(EnterPackageFeedUrlPromptMessageText);
 
 			string nugetFeedUrl = ConsoleHelper.WaitForUserPackageFeedUrlInput();
@@ -80,7 +80,7 @@ namespace NuGetPackageLister
 				IPackageRepository packageRepo = PackageRepositoryFactory.Default.CreateRepository(nugetFeedUrl);
 
 				ConsoleHelper.PrintText(SuccessfullyContactedServerMessageText);
-				ConsoleHelper.PromptUserForInput(EnterPackageIdFilterPromptMessage);
+				ConsoleHelper.PromptUserForInput(EnterPackageIdFilterPromptMessageText);
 
 				string nugetPackageId = ConsoleHelper.WaitForUserPackageIdInput();
 				bool filterOnPackageId = !string.IsNullOrWhiteSpace(nugetPackageId);
@@ -104,7 +104,8 @@ namespace NuGetPackageLister
 				ConsoleHelper.PrintTextSurroundedByHorizontalRules(NumberOfPackagesFoundMessageTemplate, foundPackages.Count.ToString());
 
 				string currentDir = Directory.GetCurrentDirectory();
-				string fileName = $"packages-list-at-{DateTime.UtcNow.ToString("yyyy-mm-ddTHH-MM-ssZ")}";
+
+				string fileName = BuildFileName(nugetPackageId);
 				string textFilePath = Path.Combine(currentDir, $"{fileName}.txt");
 				string csvFilePath = Path.Combine(currentDir, $"{fileName}.csv");
 
@@ -123,13 +124,17 @@ namespace NuGetPackageLister
 			Console.ReadLine();
 		}
 
-		private static void PrintInitialBlurbMessage()
+		private static string BuildFileName(string nugetPackageId)
 		{
-			ConsoleHelper.PrintPaddedText(textToPrint: WelcomeMessageText, paddingElement: PaddingElementEnum.HorizontalRule);
-			ConsoleHelper.PrintPaddedText(textToPrint: BlurbTextTemplate, paddingElement: PaddingElementEnum.BlankLine);
-			ConsoleHelper.PrintHorizontalRule();
-			ConsoleHelper.PrintPaddedText(textToPrint: FeedSourceDescriptionBlurb, paddingElement: PaddingElementEnum.BlankLine);
-			ConsoleHelper.PrintHorizontalRule();
+			string basePart = "packages-list";
+			string packageIdPart = "";
+			string utcTimeStampPart = DateTime.UtcNow.ToString("yyyy-mm-ddTHH-MM-ssZ");
+
+			// Include the package id if its for a specify package
+			if (!string.IsNullOrWhiteSpace(nugetPackageId))
+				packageIdPart = $"-for-{nugetPackageId}";
+
+			return $"{basePart}{packageIdPart}-at-{utcTimeStampPart}";
 		}
 
 		private static void PrintPackageIdFilteringMessage(string nugetPackageId)
