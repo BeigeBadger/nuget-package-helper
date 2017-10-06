@@ -101,6 +101,15 @@ namespace ConsoleFormattingHelper
 			PrintText($"{listSeparator}{string.Join(listSeparator, listToPrint)}");
 		}
 
+		public static void PrintInitialBlurbMessage(string welcomeMessage, string initialBlurbMessage, string dataSourceMessage)
+		{
+			PrintPaddedText(textToPrint: welcomeMessage, paddingElement: PaddingElementEnum.HorizontalRule);
+			PrintPaddedText(textToPrint: initialBlurbMessage, paddingElement: PaddingElementEnum.BlankLine);
+			PrintHorizontalRule();
+			PrintPaddedText(textToPrint: dataSourceMessage, paddingElement: PaddingElementEnum.BlankLine);
+			PrintHorizontalRule();
+		}
+
 		#endregion Formatting
 
 		#region Inputting
