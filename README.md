@@ -6,7 +6,7 @@ Interacts with the packages that are provided by a specified endpoint, supports 
 Get a list of all the packages provided by a specified endpoint.
 
 ### Delete
-TODO
+Delete/unlist packages provided by a specific endpoint.
 
 ## Repo Status
 #### Overall
