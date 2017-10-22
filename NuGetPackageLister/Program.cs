@@ -19,7 +19,6 @@ namespace NuGetPackageLister
 
 		private const string EnterPackageFeedUrlPromptMessageText = "Please enter the URL of the NuGet package feed that you would like to access:";
 		private const string NoPackageIdEnteredMessageText = "No package id has been entered, all packages will be returned.";
-		private const string SuccessfullyContactedServerMessageText = "Successfully contacted the server using the URL provided";
 		private const string AttemptingToFindPackagesMessageText = "Attempting to find packages...";
 
 		private static readonly string InitialToolBlurbMessageText =
@@ -39,12 +38,8 @@ namespace NuGetPackageLister
 			"If you only wish to return results for a specific package, please enter the package id now. Otherwise, press enter.";
 
 		// Message templates
-		private const string NumberOfPackagesFoundMessageTemplate = "{0} package/s were found.";
-
-		private const string ExceptionMessageTemplate = "A {0} was thrown\r\nThe message was: {1}\r\nStacktrace: {2}";
-		private const string AttemptingToContactServerMessageTemplate = "Attempting to contact the server via '{0}'...";
-		private const string InvalidFeedUrlMessageTemplate = "The provided package feed URL \r\n'{0}'\r\nis not valid.";
 		private const string PackageIdSpecifiedMessageTemplate = "Only packages with an id that matches '{0}' will be returned.";
+
 		private const string NoPackagesFoundAtFeedUrlMessageTemplate = "No packages were found at the following feed url:\r\n'{0}'";
 		private const string OutputLogSummaryMessageTemplate = "A text and a csv file containing the results have been outputted to:\r\n'{0}'.";
 
@@ -60,12 +55,11 @@ namespace NuGetPackageLister
 
 			string nugetFeedUrl = ConsoleHelper.WaitForUserPackageFeedUrlInput();
 
-			Uri uriResult;
-			bool validUrl = Uri.TryCreate(nugetFeedUrl, UriKind.Absolute, out uriResult);
+			bool validUrl = Uri.TryCreate(nugetFeedUrl, UriKind.Absolute, out Uri uriResult);
 
 			if (!validUrl)
 			{
-				ConsoleHelper.PrintErrorMessageThenHalt($"{InvalidFeedUrlMessageTemplate} {ConsoleHelper.RestartApplicationMessageText}", nugetFeedUrl);
+				ConsoleHelper.PrintErrorMessageThenHalt($"{ConsoleHelper.InvalidFeedUrlMessageTemplate} {ConsoleHelper.RestartApplicationMessageText}", nugetFeedUrl);
 
 				return;
 			}
@@ -75,14 +69,14 @@ namespace NuGetPackageLister
 
 			try
 			{
-				ConsoleHelper.PrintText(AttemptingToContactServerMessageTemplate, nugetFeedUrl);
+				ConsoleHelper.PrintText(ConsoleHelper.AttemptingToContactServerMessageTemplate, nugetFeedUrl);
 
 				IPackageRepository packageRepo = PackageRepositoryFactory.Default.CreateRepository(nugetFeedUrl);
 
-				ConsoleHelper.PrintText(SuccessfullyContactedServerMessageText);
+				ConsoleHelper.PrintText(ConsoleHelper.SuccessfullyContactedServerMessageText);
 				ConsoleHelper.PromptUserForInput(EnterPackageIdFilterPromptMessageText);
 
-				string nugetPackageId = ConsoleHelper.WaitForUserPackageIdInput();
+				string nugetPackageId = ConsoleHelper.WaitForUserInput();
 				bool filterOnPackageId = !string.IsNullOrWhiteSpace(nugetPackageId);
 
 				PrintPackageIdFilteringMessage(nugetPackageId);
@@ -101,7 +95,7 @@ namespace NuGetPackageLister
 				List<string> foundPackageNamesWithVersionAppended = foundPackages.Select(p => $"{p.Id} {p.Version}").ToList();
 
 				ConsoleHelper.PrintList(foundPackageNamesWithVersionAppended, ConsoleHelper.ListItemDecorator);
-				ConsoleHelper.PrintTextSurroundedByHorizontalRules(NumberOfPackagesFoundMessageTemplate, foundPackages.Count.ToString());
+				ConsoleHelper.PrintTextSurroundedByHorizontalRules(ConsoleHelper.NumberOfPackagesFoundMessageTemplate, foundPackages.Count.ToString());
 
 				string currentDir = Directory.GetCurrentDirectory();
 
@@ -116,7 +110,7 @@ namespace NuGetPackageLister
 			}
 			catch (Exception ex)
 			{
-				ConsoleHelper.PrintErrorMessageThenHalt($"{ExceptionMessageTemplate} {ConsoleHelper.RestartApplicationMessageText}", ex.GetType().Name, ex.Message, ex.StackTrace); ;
+				ConsoleHelper.PrintErrorMessageThenHalt($"{ConsoleHelper.ExceptionMessageTemplate} {ConsoleHelper.RestartApplicationMessageText}", ex.GetType().Name, ex.Message, ex.StackTrace);
 
 				return;
 			}
