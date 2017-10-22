@@ -10,9 +10,14 @@ namespace ConsoleFormattingHelper
 
 		public const string ListItemDecorator = "\r\n * ";
 		public const string RestartApplicationMessageText = "Please restart the application and try again.";
+		public const string SuccessfullyContactedServerMessageText = "Successfully contacted the server using the URL provided";
 
 		// Message templates
-		private const string ExceptionMessageTemplate = "A {0} was thrown\r\nThe message was: {1}\r\nStacktrace: {2}";
+		public const string ExceptionMessageTemplate = "A {0} was thrown\r\nThe message was: {1}\r\nStacktrace: {2}";
+
+		public const string InvalidFeedUrlMessageTemplate = "The provided package feed URL \r\n'{0}'\r\nis not valid.";
+		public const string NumberOfPackagesFoundMessageTemplate = "{0} package/s were found.";
+		public const string AttemptingToContactServerMessageTemplate = "Attempting to contact the server via '{0}'...";
 
 		#region Formatting
 
@@ -131,17 +136,17 @@ namespace ConsoleFormattingHelper
 		}
 
 		// TODO: Move to own class
-		public static string WaitForUserPackageIdInput()
+		public static string WaitForUserInput()
 		{
-			string nugetPackageId;
+			string userInput;
 
 			do
 			{
-				nugetPackageId = Console.ReadLine().Trim();
+				userInput = Console.ReadLine().Trim();
 			}
 			while (Console.KeyAvailable && Console.ReadKey(true).Key != ConsoleKey.Enter);
 
-			return nugetPackageId;
+			return userInput;
 		}
 
 		#endregion Inputting
