@@ -1,5 +1,5 @@
 # nuget-package-helper
-Interacts with the packages that are provided by a specified endpoint, supports NuGet Server 2.X.X. Built in Visual Studio 2017 using the `NuGet.Core` [library](https://github.com/NuGet/NuGet2).
+Interacts with the packages that are provided by a specified endpoint, supports NuGet Server 2.X.X. Built in Visual Studio 2017 using the `NuGet.Core` [library](https://github.com/NuGet/NuGet2) and targeting .NET Framework version 4.6.1.
 
 ## Supported actions
 ### List

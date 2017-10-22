@@ -2,3 +2,11 @@ NuGetPackageLister/.vs/
 NuGetPackageLister/bin/
 NuGetPackageLister/obj/
 NuGetPackageLister/packages/
+NuGetPackageDeleter/obj/
+NuGetPackageDeleter/bin/
+packages/
+.vs/
+ConsoleFormattingHelper/bin/
+ConsoleFormattingHelper/obj/ConsoleFormattingHelper.csproj.nuget.g.props
+ConsoleFormattingHelper/obj/Debug/netstandard2.0/ConsoleFormattingHelper.AssemblyInfo.cs
+ConsoleFormattingHelper/obj/

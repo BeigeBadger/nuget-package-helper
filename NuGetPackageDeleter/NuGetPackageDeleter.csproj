@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1F189DE-4A22-423F-8CD2-9EB3027D1519}</ProjectGuid>
+    <ProjectGuid>{F3E8E674-F070-49E8-9080-5160178CE53E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NuGetPackageLister</RootNamespace>
-    <AssemblyName>NuGetPackageLister</AssemblyName>
+    <RootNamespace>NuGetPackageDeleter</RootNamespace>
+    <AssemblyName>NuGetPackageDeleter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -59,6 +59,11 @@
       <Project>{50E0401D-772C-4779-B048-5E72AE131286}</Project>
       <Name>ConsoleFormattingHelper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nuget.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
